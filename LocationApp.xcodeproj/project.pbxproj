@@ -14,6 +14,9 @@
 		65537AC21CD9F968003F53E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65537AC01CD9F968003F53E6 /* LaunchScreen.storyboard */; };
 		65537ACD1CD9F968003F53E6 /* LocationAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65537ACC1CD9F968003F53E6 /* LocationAppTests.swift */; };
 		65537AD81CD9F968003F53E6 /* LocationAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65537AD71CD9F968003F53E6 /* LocationAppUITests.swift */; };
+		65537AE61CD9F98B003F53E6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65537AE51CD9F98B003F53E6 /* MapKit.framework */; };
+		65537AE81CD9FF59003F53E6 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65537AE71CD9FF59003F53E6 /* LocationManager.swift */; };
+		65537B261CDB722C003F53E6 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65537B251CDB722C003F53E6 /* CustomTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		65537AD31CD9F968003F53E6 /* LocationAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocationAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65537AD71CD9F968003F53E6 /* LocationAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAppUITests.swift; sourceTree = "<group>"; };
 		65537AD91CD9F968003F53E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65537AE51CD9F98B003F53E6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		65537AE71CD9FF59003F53E6 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		65537B251CDB722C003F53E6 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65537AE61CD9F98B003F53E6 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +84,7 @@
 		65537AAB1CD9F967003F53E6 = {
 			isa = PBXGroup;
 			children = (
+				65537AE51CD9F98B003F53E6 /* MapKit.framework */,
 				65537AB61CD9F968003F53E6 /* LocationApp */,
 				65537ACB1CD9F968003F53E6 /* LocationAppTests */,
 				65537AD61CD9F968003F53E6 /* LocationAppUITests */,
@@ -97,12 +105,14 @@
 		65537AB61CD9F968003F53E6 /* LocationApp */ = {
 			isa = PBXGroup;
 			children = (
+				65537AE71CD9FF59003F53E6 /* LocationManager.swift */,
 				65537AB71CD9F968003F53E6 /* AppDelegate.swift */,
 				65537AB91CD9F968003F53E6 /* ViewController.swift */,
 				65537ABB1CD9F968003F53E6 /* Main.storyboard */,
 				65537ABE1CD9F968003F53E6 /* Assets.xcassets */,
 				65537AC01CD9F968003F53E6 /* LaunchScreen.storyboard */,
 				65537AC31CD9F968003F53E6 /* Info.plist */,
+				65537B251CDB722C003F53E6 /* CustomTableViewCell.swift */,
 			);
 			path = LocationApp;
 			sourceTree = "<group>";
@@ -258,6 +268,8 @@
 			files = (
 				65537ABA1CD9F968003F53E6 /* ViewController.swift in Sources */,
 				65537AB81CD9F968003F53E6 /* AppDelegate.swift in Sources */,
+				65537B261CDB722C003F53E6 /* CustomTableViewCell.swift in Sources */,
+				65537AE81CD9FF59003F53E6 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
