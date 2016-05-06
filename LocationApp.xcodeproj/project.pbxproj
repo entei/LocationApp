@@ -17,6 +17,8 @@
 		65537AE61CD9F98B003F53E6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65537AE51CD9F98B003F53E6 /* MapKit.framework */; };
 		65537AE81CD9FF59003F53E6 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65537AE71CD9FF59003F53E6 /* LocationManager.swift */; };
 		65537B261CDB722C003F53E6 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65537B251CDB722C003F53E6 /* CustomTableViewCell.swift */; };
+		65537B281CDBBED7003F53E6 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65537B271CDBBED7003F53E6 /* Restaurant.swift */; };
+		65537B2C1CDCB607003F53E6 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65537B2B1CDCB607003F53E6 /* Settings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		65537AE51CD9F98B003F53E6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		65537AE71CD9FF59003F53E6 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		65537B251CDB722C003F53E6 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		65537B271CDBBED7003F53E6 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		65537B2B1CDCB607003F53E6 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,8 @@
 				65537AC01CD9F968003F53E6 /* LaunchScreen.storyboard */,
 				65537AC31CD9F968003F53E6 /* Info.plist */,
 				65537B251CDB722C003F53E6 /* CustomTableViewCell.swift */,
+				65537B271CDBBED7003F53E6 /* Restaurant.swift */,
+				65537B2B1CDCB607003F53E6 /* Settings.swift */,
 			);
 			path = LocationApp;
 			sourceTree = "<group>";
@@ -266,8 +272,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65537B281CDBBED7003F53E6 /* Restaurant.swift in Sources */,
 				65537ABA1CD9F968003F53E6 /* ViewController.swift in Sources */,
 				65537AB81CD9F968003F53E6 /* AppDelegate.swift in Sources */,
+				65537B2C1CDCB607003F53E6 /* Settings.swift in Sources */,
 				65537B261CDB722C003F53E6 /* CustomTableViewCell.swift in Sources */,
 				65537AE81CD9FF59003F53E6 /* LocationManager.swift in Sources */,
 			);

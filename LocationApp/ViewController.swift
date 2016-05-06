@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
@@ -17,18 +17,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
     var coreLocationManager = CLLocationManager()
     // define property, LocationManager - custom library class
     var locationManager: LocationManager!
+    var mapViewCenter: CLLocationCoordinate2D!
+    
     //"http://api.tripadvisor.com/api/partner/2.0/map/42.33141,-71.099396?key=HackTripAdvisor-ade29ff43aed"
-    let baseUrl = "http://api.tripadvisor.com/api/partner/2.0/map/"
-    let apiKey = "HackTripAdvisor-ade29ff43aed"
+    let baseUrl = Settings().baseUrl
+    let apiKey = Settings().apiKey
     
     var numberOfRows = 0
-    var namesArray = [String]()
-
+    var restaurants = [Restaurant]()
+    
     // when view is load
     override func viewDidLoad() {
         super.viewDidLoad()
-        //
+        
+        // to use delegate methods
         coreLocationManager.delegate = self
+        mapView.delegate = self
         
         // initialize location manager when app running
         locationManager = LocationManager.sharedInstance
@@ -46,63 +50,33 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
                 }
         } else {
             // only if user already has authorized our app to use location
-//            getLocation()
-            // start tracking changes in the user’s current location
-            coreLocationManager.startUpdatingLocation()
+//            coreLocationManager.startUpdatingLocation() // start tracking changes in the user’s current location
             self.mapView.showsUserLocation = true
+//            updateInfo()
         }
     }
-
-//    func getLocation() {
-//        // use custom location manager library (current location)
-//        locationManager.startUpdatingLocationWithCompletionHandler  { (latitude, longitude, status, verboseMessage, error) -> () in
-//            print("\(latitude) : \(longitude)")
-//            // we have to use self within a clousure
-//            self.displayLocation(CLLocation(latitude: latitude, longitude: longitude))
-//        }
-//    }
-    
-//    func displayLocation(location: CLLocation) {
-//        let center = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-//        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpanMake(1, 1))
-//            
-//        mapView.setRegion(region, animated: true)
-//        // create current position point
-//        let locationPinCoord = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-//        let annotation = MKPointAnnotation()
-//        annotation.coordinate = locationPinCoord // add pin to annotation
-//        // add anotation to map view
-//        mapView.addAnnotation(annotation)
-//        mapView.showAnnotations([annotation], animated: true)
-//        
-//        locationManager.reverseGeocodeLocationWithCoordinates(location) { (reverseGecodeInfo, placemark, error) in
-//            print(reverseGecodeInfo);
-//            let address = reverseGecodeInfo?.objectForKey("formattedAddress") as! String
-//            self.locationInfo.text = address
-//        }
-//    }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         // if status changed and
         if status != CLAuthorizationStatus.NotDetermined || status != CLAuthorizationStatus.Restricted ||  status != CLAuthorizationStatus.Denied {
-            coreLocationManager.startUpdatingLocation()
+            coreLocationManager.startUpdatingLocation() // start tracking changes in the user’s current location
         }
     }
     
+    // track user movement
     // will start update location over and over again when startUpdateLocation() is call
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations.last
-        let center = CLLocationCoordinate2DMake(location!.coordinate.latitude, location!.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpanMake(0.05, 0.05))
-        
-        self.mapView.setRegion(region, animated: true)
-//        print(location)
-        self.coreLocationManager.stopUpdatingLocation()
-        fetchInfo(location!.coordinate.latitude, longitude: location!.coordinate.longitude)
-    }
+//    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        print("didUpdateLocations called")
+//        let location = locations.last
+//        let center = CLLocationCoordinate2DMake(location!.coordinate.latitude, location!.coordinate.longitude)
+//        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpanMake(0.03, 0.03))
+//        self.mapView.setRegion(region, animated: true)
+//        self.coreLocationManager.stopUpdatingLocation()
+////        fetchData(location!.coordinate.latitude, longitude: location!.coordinate.longitude, distance: 1)
+//    }
     
-    func fetchInfo(latitude: Double, longitude: Double) {
-        let urlString = "\(baseUrl)\(latitude),\(longitude)/restaurants?key=\(apiKey)"
+    func fetchData(latitude: Double, longitude: Double, distance: Int) {
+        let urlString = "\(baseUrl)\(latitude),\(longitude)/restaurants?key=\(apiKey)&distance=\(distance)&lunit=km"
         let url: NSURL = NSURL(string: urlString)!
 
         let task = NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) in
@@ -110,13 +84,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
                 // If there is an error in the web request, print it to the console
                 print(error!.localizedDescription)
             }
-    
             do {
+                self.restaurants.removeAll()
                 let jsonData = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as! NSDictionary
-//                print(String(jsonData))
-                self.numberOfRows = jsonData["data"]!.count
-                for i in 0...self.numberOfRows {
-                    self.namesArray.append("name\(i)")
+                print("making request...")
+                // print(String(jsonData))
+                let restaurantsJSONArray = jsonData["data"] as! NSArray
+                self.numberOfRows = restaurantsJSONArray.count
+                
+                for restaurant in restaurantsJSONArray {
+                    // populate restaurants array of the JSON response
+                    let rest: Restaurant = Restaurant(restDictionary: restaurant as! NSDictionary)
+                    self.restaurants.append(rest)
                 }
                 // update UI in the main thread
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -129,27 +108,76 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
         task.resume()
        
     }
-    @IBAction func updateLocation(sender: AnyObject) {
-//        getLocation()
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBAction func reloadButton(sender: AnyObject) {
+        // nearest relative to the map center
+        findNearestRestaurants()
     }
 
+    func findNearestRestaurants() {
+        fetchData(mapViewCenter.latitude, longitude: mapViewCenter.longitude, distance: 2)
+//        locationManager.startUpdatingLocationWithCompletionHandler  { (latitude, longitude, status, verboseMessage, error) -> () in
+//            print("Your position: \(latitude) : \(longitude)")
+//            self.fetchData(latitude, longitude: longitude, distance: 2)
+//        }
+    }
+    
+    // MARK: - Map view
+    
+    func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        mapViewCenter = mapView.centerCoordinate
+        let mapCenterLatitude = mapView.centerCoordinate.latitude
+        let mapCenterLongitude = mapView.centerCoordinate.longitude
+        print("Latitude: \(mapCenterLatitude) Longitude: \(mapCenterLongitude)")
+    }
+    
     // MARK: - Table view
-
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return numberOfRows
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomTableViewCell
-//        cell.textLabel?.text = "asd"  // textLabel may be nil
-        if namesArray.count != 0 {
-            cell.nameLabel.text = namesArray[indexPath.row]
+        
+        if restaurants.count != 0 {
+            cell.nameLabel.text = restaurants[indexPath.row].name
+            cell.distanceLabel.text = "\(restaurants[indexPath.row].distance * 1000)m"
+            cell.addressLabel.text = restaurants[indexPath.row].address
+            cell.ratingLabel.text = restaurants[indexPath.row].rating
+            
         }
         return cell
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        //CODE TO BE RUN ON CELL TOUCH
+        showRestaurantAnnotation(restaurants[indexPath.row])
+    }
+    
+    func showRestaurantAnnotation(restaurant: Restaurant) {
+        mapView.removeAnnotations(mapView.annotations) // remove old pins
+        
+        let latitude = (restaurant.latitude as NSString).doubleValue
+        let longitude = (restaurant.longitude as NSString).doubleValue
+        
+        let center = CLLocationCoordinate2DMake(latitude, longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpanMake(0.05, 0.05))
 
+        mapView.setRegion(region, animated: true)
+        // create restaurant pin
+        let locationPinCoord = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = locationPinCoord // add annotation to pin
+        annotation.title = restaurant.name
+        annotation.subtitle = restaurant.address
+        // add anotation to map view
+        mapView.addAnnotation(annotation)
+        mapView.showAnnotations([annotation], animated: true)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 }
