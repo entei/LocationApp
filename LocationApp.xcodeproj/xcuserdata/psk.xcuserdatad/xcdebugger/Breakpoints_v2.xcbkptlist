@@ -6,7 +6,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LocationApp/ViewController.swift"
@@ -38,31 +38,31 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "LocationApp.ViewController.restaurants.getter : Swift.Array&lt;LocationApp.Restaurant&gt;"
+                  symbolName = "LocationApp.ViewController.restaurants.setter : Swift.Array&lt;LocationApp.Restaurant&gt;"
                   moduleName = "LocationApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/psk/Sandbox/iOS/LocationApp/LocationApp/ViewController.swift"
-                  timestampString = "484212323.636088"
+                  timestampString = "484233746.494926"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "26"
-                  endingLineNumber = "26"
-                  offsetFromSymbolStart = "35">
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "65">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "LocationApp.ViewController.restaurants.setter : Swift.Array&lt;LocationApp.Restaurant&gt;"
+                  symbolName = "LocationApp.ViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; LocationApp.ViewController"
                   moduleName = "LocationApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/psk/Sandbox/iOS/LocationApp/LocationApp/ViewController.swift"
-                  timestampString = "484212323.636276"
+                  timestampString = "484233746.495147"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "26"
-                  endingLineNumber = "26"
-                  offsetFromSymbolStart = "65">
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "645">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -72,12 +72,12 @@
                   moduleName = "LocationApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/psk/Sandbox/iOS/LocationApp/LocationApp/ViewController.swift"
-                  timestampString = "484212323.636552"
+                  timestampString = "484233746.495326"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "26"
-                  endingLineNumber = "26"
-                  offsetFromSymbolStart = "318">
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "553">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -96,6 +96,84 @@
             endingLineNumber = "37"
             landmarkName = "init(restDictionary:)"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LocationApp/ViewController.swift"
+            timestampString = "484233731.007823"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "ViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LocationApp.ViewController.mapViewCenter.getter : Swift.ImplicitlyUnwrappedOptional&lt;__C.CLLocationCoordinate2D&gt;"
+                  moduleName = "LocationApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/psk/Sandbox/iOS/LocationApp/LocationApp/ViewController.swift"
+                  timestampString = "484233731.819622"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LocationApp.ViewController.mapViewCenter.setter : Swift.ImplicitlyUnwrappedOptional&lt;__C.CLLocationCoordinate2D&gt;"
+                  moduleName = "LocationApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/psk/Sandbox/iOS/LocationApp/LocationApp/ViewController.swift"
+                  timestampString = "484233731.820186"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LocationApp.ViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; LocationApp.ViewController"
+                  moduleName = "LocationApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/psk/Sandbox/iOS/LocationApp/LocationApp/ViewController.swift"
+                  timestampString = "484233731.820389"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "314">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LocationApp.ViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;LocationApp.ViewController&gt;"
+                  moduleName = "LocationApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/psk/Sandbox/iOS/LocationApp/LocationApp/ViewController.swift"
+                  timestampString = "484233731.820555"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "237">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

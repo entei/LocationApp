@@ -41,6 +41,5 @@ class Restaurant {
         self.phone = restDictionary["phone"] as? String
         self.percentRecommended = restDictionary["percent_recommended"] as? Int
         self.price_level = restDictionary["price_level"] as? String
-        print("Created: \(name)")
     }
 }

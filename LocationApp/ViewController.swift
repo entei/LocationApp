@@ -51,15 +51,16 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         } else {
             // only if user already has authorized our app to use location
 //            coreLocationManager.startUpdatingLocation() // start tracking changes in the user’s current location
+            showCurrentLocation()
             self.mapView.showsUserLocation = true
-//            updateInfo()
         }
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         // if status changed and
         if status != CLAuthorizationStatus.NotDetermined || status != CLAuthorizationStatus.Restricted ||  status != CLAuthorizationStatus.Denied {
-            coreLocationManager.startUpdatingLocation() // start tracking changes in the user’s current location
+//            coreLocationManager.startUpdatingLocation() // start tracking changes in the user’s current location
+            showCurrentLocation()
         }
     }
     
@@ -122,6 +123,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 //        }
     }
     
+    func showCurrentLocation() {
+        locationManager.startUpdatingLocationWithCompletionHandler  { (latitude, longitude, status, verboseMessage, error) -> () in
+            print("Your position: \(latitude) : \(longitude)")
+            let center = CLLocationCoordinate2DMake(latitude, longitude)
+            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpanMake(0.03, 0.03))
+            self.mapView.setRegion(region, animated: true)
+            self.fetchData(latitude, longitude: longitude, distance: 2)
+        }
+    }
     // MARK: - Map view
     
     func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
@@ -145,7 +155,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             cell.distanceLabel.text = "\(restaurants[indexPath.row].distance * 1000)m"
             cell.addressLabel.text = restaurants[indexPath.row].address
             cell.ratingLabel.text = restaurants[indexPath.row].rating
-            
+            cell.priceLabel.text = restaurants[indexPath.row].price_level
         }
         return cell
     }

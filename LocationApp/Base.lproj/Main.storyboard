@@ -51,9 +51,15 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lx5-CW-pKn">
-                                                    <rect key="frame" x="261" y="27" width="145" height="21"/>
+                                                    <rect key="frame" x="261" y="27" width="58" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.39647414921465973" green="0.39647414921465973" blue="0.39647414921465973" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XV1-y3-e2b">
+                                                    <rect key="frame" x="346" y="27" width="60" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.24092531204223633" green="0.55765151977539062" blue="0.089575417339801788" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsB-Ij-RjS">
@@ -67,12 +73,15 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="lx5-CW-pKn" firstAttribute="trailing" secondItem="Pwy-Kp-YO5" secondAttribute="trailingMargin" id="91G-XQ-ef2"/>
+                                                <constraint firstItem="lx5-CW-pKn" firstAttribute="trailing" secondItem="Pwy-Kp-YO5" secondAttribute="trailingMargin" constant="-87" id="91G-XQ-ef2"/>
                                                 <constraint firstAttribute="bottom" secondItem="AEg-eF-sW4" secondAttribute="bottom" id="ERH-es-acL"/>
                                                 <constraint firstItem="bsB-Ij-RjS" firstAttribute="centerY" secondItem="Pwy-Kp-YO5" secondAttribute="centerY" id="Li7-zp-D83"/>
                                                 <constraint firstItem="bsB-Ij-RjS" firstAttribute="leading" secondItem="Pwy-Kp-YO5" secondAttribute="leadingMargin" id="NIP-L0-PWW"/>
                                                 <constraint firstItem="bsB-Ij-RjS" firstAttribute="top" secondItem="Pwy-Kp-YO5" secondAttribute="topMargin" constant="-4" id="RIF-ib-V1H"/>
                                                 <constraint firstItem="Qot-iN-obc" firstAttribute="leading" secondItem="AEg-eF-sW4" secondAttribute="leading" id="V7h-xz-QRJ"/>
+                                                <constraint firstItem="XV1-y3-e2b" firstAttribute="leading" secondItem="lx5-CW-pKn" secondAttribute="trailing" constant="27" id="YEN-Uc-8Fy"/>
+                                                <constraint firstItem="XV1-y3-e2b" firstAttribute="trailing" secondItem="Pwy-Kp-YO5" secondAttribute="trailingMargin" id="fqn-UW-ena"/>
+                                                <constraint firstItem="XV1-y3-e2b" firstAttribute="baseline" secondItem="lx5-CW-pKn" secondAttribute="baseline" id="nEB-Fx-YH8"/>
                                                 <constraint firstAttribute="trailing" secondItem="Qot-iN-obc" secondAttribute="trailing" id="oQ8-Oz-J11"/>
                                                 <constraint firstItem="AEg-eF-sW4" firstAttribute="leading" secondItem="bsB-Ij-RjS" secondAttribute="trailing" constant="8" id="s5N-qA-nxy"/>
                                                 <constraint firstItem="lx5-CW-pKn" firstAttribute="leading" secondItem="AEg-eF-sW4" secondAttribute="trailing" constant="8" symbolic="YES" id="sqI-Tf-uzQ"/>
@@ -84,6 +93,7 @@
                                             <outlet property="addressLabel" destination="Qot-iN-obc" id="SJs-is-E8Z"/>
                                             <outlet property="distanceLabel" destination="lx5-CW-pKn" id="feY-3N-ily"/>
                                             <outlet property="nameLabel" destination="bsB-Ij-RjS" id="ct1-XL-zC7"/>
+                                            <outlet property="priceLabel" destination="XV1-y3-e2b" id="qFd-V5-g2j"/>
                                             <outlet property="ratingLabel" destination="AEg-eF-sW4" id="sf9-9i-htI"/>
                                         </connections>
                                     </tableViewCell>
